@@ -1,5 +1,5 @@
 
-import { boldMindAPI, type ExamType, type StartCbtPayload } from '@boldmind-tech/api-client';
+import { boldMindAPI, type ExamType, type StartCbtPayload } from '@boldmindng/api-client';
 
 class EducenterAPI {
   // ==================== Users ====================

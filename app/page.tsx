@@ -1,9 +1,8 @@
-// apps/educenter/app/page.tsx
 "use client";
 
 
 import { motion } from "framer-motion";
-import { SuperNavbar, SuperFooter } from "@boldmind-tech/ui";
+import { SuperNavbar, SuperFooter } from "@boldmindng/ui";
 import {
   BookOpen,
   Award,
@@ -772,7 +771,7 @@ export default function EduCenterHomePage() {
               From Awareness to Enablement
             </h2>
             <p className="text-xl text-blue-200 max-w-3xl mx-auto">
-              EduCenter is one pillar of the BoldMind flywheel — four interconnected platforms designed to take you from knowing to doing.
+              EduCenter is one pillar of the BoldmindNG flywheel — four interconnected platforms designed to take you from knowing to doing.
             </p>
           </div>
 
@@ -781,7 +780,7 @@ export default function EduCenterHomePage() {
               {
                 step: "01",
                 label: "Awareness",
-                name: "AmeboGist",
+                name: "AmeboGist NG",
                 url: "https://amebogist.ng",
                 emoji: "📰",
                 color: "from-orange-500 to-amber-500",
@@ -791,7 +790,7 @@ export default function EduCenterHomePage() {
               {
                 step: "02",
                 label: "Conviction",
-                name: "VillageCircle",
+                name: "VillageCircle NG",
                 url: "https://villagecircle.ng",
                 emoji: "🏘️",
                 color: "from-green-500 to-emerald-500",
@@ -801,7 +800,7 @@ export default function EduCenterHomePage() {
               {
                 step: "03",
                 label: "Education",
-                name: "EduCenter",
+                name: "Boldmind EduCenter",
                 url: "/",
                 emoji: "🎓",
                 color: "from-blue-500 to-cyan-500",
@@ -812,7 +811,7 @@ export default function EduCenterHomePage() {
               {
                 step: "04",
                 label: "Enablement",
-                name: "BoldMind",
+                name: "PlanAI by BoldmindNG",
                 url: "https://planai.boldmind.ng",
                 emoji: "⚡",
                 color: "from-purple-500 to-pink-500",

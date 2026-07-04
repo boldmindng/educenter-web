@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { BookOpen, Flame, Trophy, BarChart3, Target, Zap } from 'lucide-react';
  
 export const metadata: Metadata = {
-  title: 'Student Dashboard — EduCenter',
+  title: 'Student Dashboard — Boldmind EduCenter',
   robots: { index: false },
 };
  

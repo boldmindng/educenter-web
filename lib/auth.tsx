@@ -2,7 +2,7 @@
 
 import React, { useEffect, useReducer } from 'react';
 import type { ReactNode } from 'react';
-import { boldMindAPI } from '@boldmind-tech/api-client';
+import { boldMindAPI } from '@boldmindng/api-client';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 

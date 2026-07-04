@@ -2,13 +2,13 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Educenter',
-    short_name: 'EduCenter',
-    description: 'EduCenter - Africa\'s Practical Learning Engine',
+    name: 'Boldmind Educational Center ',
+    short_name: 'Boldmind EduCenter',
+    description: 'Boldmind EduCenter - Africa\'s Practical Learning Engine',
     start_url: '/',
     display: 'standalone',
-    background_color: '#0A1D37',
-    theme_color: '#FFC107',
+    background_color: '#FAFAF9',
+    theme_color: '#1E40AF',
     orientation: 'portrait-primary',
     icons: [
       {

@@ -1,260 +1,149 @@
-# EduCenter - Africa's Practical Learning Engine
-
-Part of the BoldMind monorepo ecosystem.
-
-## Overview
-
-EduCenter is a comprehensive learning platform with three core pillars:
-
-1. **Study Hub** - JAMB/WAEC/NECO past questions + CBT mastery
-2. **Digital Business School** - Content funnels, automation & sales playbooks for Nigerian SMEs  
-3. **AI Skills Lab** - Practical AI tools for creators and entrepreneurs
-
-## Tech Stack
-
-### Frontend
-- **Next.js 14** (App Router)
-- **TypeScript**
-- **Tailwind CSS**
-- **Lucide React** (Icons)
-- **React Hot Toast** (Notifications)
-
-### Backend (NestJS)
-- **NestJS** API Gateway
-- **MongoDB** (User data, progress tracking)
-- **Mongoose** ODM
-- **Firebase Auth** (via @boldmind/auth)
-- **Paystack** (Payments)
-
-### Shared Packages
-- `@boldmind-tech/ui` - Shared UI components
-- `@boldmind-tech/auth` - Firebase authentication
-- `@boldmind-tech/utils` - Helper functions
-- `@boldmind-tech/payments` - Paystack integration
-- `@boldmind-tech/api-client` - HTTP client
-
-## Project Structure
 
 ```
-apps/web/educenter/
-├── app/
-│   ├── (auth)/
-│   │   ├── login/page.tsx
-│   │   └── register/page.tsx
-│   ├── (dashboard)/
-│   │   ├── dashboard/page.tsx
-│   │   ├── study-hub/
-│   │   │   ├── page.tsx
-│   │   │   ├── subjects/page.tsx
-│   │   │   ├── practice/[subject]/[year]/page.tsx
-│   │   │   └── performance/page.tsx
-│   │   ├── business-school/
-│   │   │   ├── page.tsx
-│   │   │   └── courses/page.tsx
-│   │   ├── ai-lab/
-│   │   │   ├── page.tsx
-│   │   │   └── tools/page.tsx
-│   │   └── subscription/page.tsx
-│   ├── page.tsx (Landing)
-│   ├── layout.tsx
-│   ├── providers.tsx
-│   └── globals.css
-├── lib/
-│   ├── config.ts
-│   ├── api.ts
-│   ├── firebase.ts
-│   └── hooks/
-│       └── useAuth.ts
-├── components/
-├── public/
-├── package.json
-├── next.config.js
-├── tailwind.config.ts
-├── tsconfig.json
-└── .env.local.example
+educenter-web
+├─ .npmrc
+├─ app
+│  ├─ (auth)
+│  │  ├─ change-password
+│  │  │  └─ page.tsx
+│  │  ├─ layout.tsx
+│  │  ├─ login
+│  │  │  └─ page.tsx
+│  │  ├─ register
+│  │  │  └─ page.tsx
+│  │  ├─ reset-password
+│  │  │  └─ page.tsx
+│  │  └─ verify-email
+│  │     └─ page.tsx
+│  ├─ (dashboard)
+│  │  ├─ business-school
+│  │  │  └─ page.tsx
+│  │  ├─ dashboard
+│  │  │  └─ page.tsx
+│  │  ├─ layout.tsx
+│  │  ├─ Sidebar.tsx
+│  │  ├─ study-hub
+│  │  │  ├─ history
+│  │  │  │  └─ page.tsx
+│  │  │  ├─ leaderboard
+│  │  │  │  └─ page.tsx
+│  │  │  ├─ notes
+│  │  │  │  └─ page.tsx
+│  │  │  ├─ page.tsx
+│  │  │  ├─ practice
+│  │  │  │  └─ [subject]
+│  │  │  │     └─ [year]
+│  │  │  │        └─ page.tsx
+│  │  │  ├─ progress
+│  │  │  │  └─ page.tsx
+│  │  │  └─ subjects
+│  │  │     ├─ page.tsx
+│  │  │     └─ [subject]
+│  │  │        └─ page.tsx
+│  │  └─ subscription
+│  │     └─ page.tsx
+│  ├─ api
+│  │  └─ auth
+│  │     └─ callback
+│  │        └─ route.ts
+│  ├─ educenterLayout.tsx
+│  ├─ globals.css
+│  ├─ layout.tsx
+│  ├─ manifest.ts
+│  ├─ page.tsx
+│  ├─ pricing
+│  │  └─ page.tsx
+│  ├─ privacy
+│  │  └─ page.tsx
+│  ├─ Providers.tsx
+│  ├─ robots.ts
+│  ├─ sitemap.ts
+│  └─ terms
+│     └─ page.tsx
+├─ boldmind-system-design-v2-alignment-addendum.md
+├─ components
+│  └─ index.ts
+├─ educenter-web-project-tree.md
+├─ examaple.md
+├─ global.d.ts
+├─ lib
+│  ├─ api.ts
+│  ├─ auth.tsx
+│  ├─ config.ts
+│  ├─ types.ts
+│  └─ user-api-adapter.ts
+├─ middleware.ts
+├─ next.config.mjs
+├─ package.json
+├─ postcss.config.js
+├─ public
+│  ├─ apple-touch-icon.png
+│  ├─ browserconfig.xml
+│  ├─ favicon.ico
+│  ├─ favicon.png
+│  ├─ hero-image.png
+│  ├─ icon-192x192-maskable.png
+│  ├─ icon-192x192.png
+│  ├─ icon-512x512-maskable.png
+│  ├─ icon-512x512.png
+│  ├─ icons
+│  │  ├─ apple
+│  │  │  ├─ apple-touch-icon-114x114.png
+│  │  │  ├─ apple-touch-icon-120x120.png
+│  │  │  ├─ apple-touch-icon-144x144.png
+│  │  │  ├─ apple-touch-icon-152x152.png
+│  │  │  ├─ apple-touch-icon-167x167.png
+│  │  │  ├─ apple-touch-icon-57x57.png
+│  │  │  ├─ apple-touch-icon-60x60.png
+│  │  │  ├─ apple-touch-icon-72x72.png
+│  │  │  ├─ apple-touch-icon-76x76.png
+│  │  │  └─ apple-touch-icon.png
+│  │  ├─ favicon-128x128.png
+│  │  ├─ favicon-16x16.png
+│  │  ├─ favicon-256x256.png
+│  │  ├─ favicon-32x32.png
+│  │  ├─ favicon-48x48.png
+│  │  ├─ favicon-64x64.png
+│  │  ├─ favicon-96x96.png
+│  │  ├─ pwa
+│  │  │  ├─ icon-128x128-maskable.png
+│  │  │  ├─ icon-128x128.png
+│  │  │  ├─ icon-144x144-maskable.png
+│  │  │  ├─ icon-144x144.png
+│  │  │  ├─ icon-152x152-maskable.png
+│  │  │  ├─ icon-152x152.png
+│  │  │  ├─ icon-192x192-maskable.png
+│  │  │  ├─ icon-192x192.png
+│  │  │  ├─ icon-384x384-maskable.png
+│  │  │  ├─ icon-384x384.png
+│  │  │  ├─ icon-512x512-maskable.png
+│  │  │  ├─ icon-512x512.png
+│  │  │  ├─ icon-72x72-maskable.png
+│  │  │  ├─ icon-72x72.png
+│  │  │  ├─ icon-96x96-maskable.png
+│  │  │  └─ icon-96x96.png
+│  │  └─ windows
+│  │     ├─ mstile-144x144.png
+│  │     ├─ mstile-150x150.png
+│  │     ├─ mstile-310x150.png
+│  │     ├─ mstile-310x310.png
+│  │     └─ mstile-70x70.png
+│  ├─ logo.png
+│  ├─ manifest.json
+│  ├─ site.webmanifest
+│  ├─ socail-media-banner.png
+│  ├─ social
+│  │  ├─ facebook-cover.jpg
+│  │  ├─ linkedin-banner.jpg
+│  │  ├─ og-image.jpg
+│  │  ├─ og-image.webp
+│  │  ├─ twitter-card.jpg
+│  │  ├─ whatsapp-preview.jpg
+│  │  └─ youtube-art.jpg
+│  └─ sw.js
+├─ README.md
+├─ tailwind.config.js
+├─ tsconfig.json
+└─ updating.md
+
 ```
-
-## Setup Instructions
-
-### Prerequisites
-- Node.js 18+
-- pnpm (for monorepo)
-- MongoDB running locally or Atlas account
-- Firebase project
-- Paystack account
-
-### 1. Environment Variables
-
-Copy `.env.local.example` to `.env.local` and fill in:
-
-```bash
-# Firebase
-NEXT_PUBLIC_FIREBASE_API_KEY=
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
-NEXT_PUBLIC_FIREBASE_APP_ID=
-
-# API
-NEXT_PUBLIC_API_URL=http://localhost:4000/api
-
-# Past Questions
-NEXT_PUBLIC_ALOC_ACCESS_TOKEN=your_aloc_token
-
-# Paystack
-NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY=pk_test_xxx
-```
-
-### 2. Install Dependencies
-
-From monorepo root:
-
-```bash
-pnpm install
-```
-
-### 3. Start Development Server
-
-```bash
-# Frontend (from root)
-pnpm --filter @boldmind/educenter dev
-
-# Backend (from root)
-pnpm --filter @boldmind/api-gateway dev
-```
-
-Or from app directory:
-
-```bash
-cd apps/web/educenter
-pnpm dev
-```
-
-App will run on `http://localhost:3001`
-
-### 4. Backend Setup
-
-```bash
-cd services/api-gateway
-
-# Copy env file
-cp .env.example .env
-
-# Install dependencies
-pnpm install
-
-# Start backend
-pnpm start:dev
-```
-
-Backend will run on `http://localhost:4000`
-
-## Features
-
-### Study Hub
-- ✅ 10,000+ JAMB/WAEC/NECO past questions
-- ✅ Subject-based practice
-- ✅ CBT simulation mode
-- ✅ Performance tracking & analytics
-- ✅ Study streak system
-- ✅ Random practice (5 daily attempts for free users)
-- ✅ Leaderboard
-
-### Digital Business School
-- 🚧 Course library (free & paid)
-- 🚧 Sales funnel templates
-- 🚧 WhatsApp automation guides
-- 🚧 Marketing playbooks
-- 🚧 Expert-led masterclasses
-- 🚧 Community access
-
-### AI Skills Lab
-- 🚧 AI video generation
-- 🚧 Prompt engineering course
-- 🚧 WhatsApp AI automation
-- 🚧 Content creation suite
-- 🚧 AI tools marketplace
-
-## Subscription Plans
-
-### Study Hub
-- **6 Months**: ₦700
-- **1 Year**: ₦1,000
-
-### Digital Business School
-- **Lifetime**: ₦1,000 (one-time payment)
-
-### AI Skills Lab
-- **Lifetime**: ₦1,000 (one-time payment)
-
-## API Integration
-
-### Past Questions API (ALOC)
-
-```typescript
-import { pastQuestionsAPI } from '@/lib/api';
-
-// Get all questions for a subject/year
-const questions = await pastQuestionsAPI.getAllQuestions('mathematics', '2020');
-
-// Get random question
-const randomQ = await pastQuestionsAPI.getRandomQuestion('english', '2019');
-```
-
-### BoldMind API
-
-```typescript
-import { boldMindAPI } from '@/lib/api';
-
-// Save progress
-await boldMindAPI.saveProgress({
-  uid: user.uid,
-  subject: 'physics',
-  year: '2021',
-  questionId: 'q123',
-  answer: 'A',
-  isCorrect: true,
-  timeSpent: 45,
-});
-
-// Get user progress
-const progress = await boldMindAPI.getProgress(user.uid);
-```
-
-## Deployment
-
-### Frontend (Vercel)
-
-```bash
-# Build
-pnpm build
-
-# Deploy to Vercel
-vercel --prod
-```
-
-### Backend (Railway/Render)
-
-```bash
-cd services/api-gateway
-pnpm build
-pnpm start:prod
-```
-
-## Contributing
-
-1. Create feature branch from `main`
-2. Make changes
-3. Run tests: `pnpm test`
-4. Submit PR
-
-## License
-
-Part of BoldMind ecosystem. All rights reserved.
-
-## Support
-
-For issues or questions:
-- Email: support@boldmind.ng
-- Docs: https://docs.boldmind.ng/educenter

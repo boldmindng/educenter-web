@@ -7,7 +7,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
 import { clearRefreshToken, useAuthStore } from '@/lib/auth';
-import { boldMindAPI } from '@boldmind-tech/api-client';
+import { boldMindAPI } from '@boldmindng/api-client';
 
 import {
   BookOpen,

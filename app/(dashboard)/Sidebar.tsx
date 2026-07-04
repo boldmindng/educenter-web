@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { authApi } from '@/lib/auth';
 import type { AuthUser, TokenPair } from '@/lib/auth';
 
-import { cn } from '@boldmind-tech/ui';
+import { cn } from '@boldmindng/ui';
 import { toast } from 'sonner';
 
 import {

@@ -1,79 +1,188 @@
+/* app/globals.css */
+/* Tailwind v4 — uses @import "tailwindcss" directive */
 
-@import url("https://fonts.cdnfonts.com/css/opendyslexic");
-@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* ── BoldmindNG / EduCenter design tokens ─────────────────────────────────── */
 
-/* ── Brand tokens ──────────────────────────────────────────────────────────── */
-:root {
-  --edu-navy:       #00143C;
-  --edu-navy-deep:  #0F1E35;
-  --edu-navy-mid:   #1E3A5F;
-  --edu-navy-light: #2A4A6E;
-  --edu-navy-muted: #0A1F4F;
-  --edu-gold:       #FFC800;
-  --edu-gold-dark:  #E6B400;
-  --edu-green:      #00A859;
-  --edu-amber:      #F59E0B;
+@theme {
+  /* Education blue */
+  --color-edu-50: #EFF6FF;
+  --color-edu-100: #DBEAFE;
+  --color-edu-200: #BFDBFE;
+  --color-edu-300: #93C5FD;
+  --color-edu-400: #60A5FA;
+  --color-edu-500: #3B82F6;
+  --color-edu-600: #2563EB;
+  --color-edu-700: #1D4ED8;
+  --color-edu-800: #1E40AF;
+  /* PRIMARY */
+  --color-edu-900: #1E3A8A;
+  --color-edu-950: #172554;
+
+  /* Accent — amber (urgency / exam energy) */
+  --color-accent-400: #FBBF24;
+  --color-accent-500: #F59E0B;
+  --color-accent-600: #D97706;
+
+  /* Correct / wrong answer feedback */
+  --color-correct-500: #22C55E;
+  --color-correct-700: #15803D;
+  --color-wrong-500: #F43F5E;
+  --color-wrong-700: #BE123C;
+
+  /* Surfaces */
+  --color-surface: #F8FAFC;
+  --color-surface-card: #FFFFFF;
+  --color-surface-border: #E2E8F0;
+  --color-surface-muted: #94A3B8;
+
+  /* Typography — OpenDyslexic ecosystem default */
+  --font-body: OpenDyslexic, "Plus Jakarta Sans", Inter, sans-serif;
+  --font-display: OpenDyslexic, "Plus Jakarta Sans", sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+  /* Border radius */
+  --radius-card: 1rem;
+  --radius-pill: 9999px;
 }
 
-/* ── Component styles ──────────────────────────────────────────────────────── */
-.quick-link-card:hover { border-color: var(--edu-navy-light) !important; }
+/* ── Base reset / global styles ───────────────────────────────────────────── */
 
-.question-card {
-  border: 2px solid var(--product-muted);
-  border-radius: var(--radius-xl);
-  padding: 1.5rem;
-  background-color: var(--product-background);
-  transition: border-color var(--transition-quick);
-}
-.question-card:hover    { border-color: var(--edu-navy-light); }
-.question-card.selected { border-color: var(--edu-gold); background-color: color-mix(in srgb, var(--edu-gold) 10%, white); }
-.question-card.correct  { border-color: var(--edu-green); background-color: color-mix(in srgb, var(--edu-green) 10%, white); }
-.question-card.incorrect { border-color: var(--color-error); background-color: var(--color-error-light); }
-
-.cbt-timer {
-  font-size: 1.5rem;
-  font-weight: 900;
-  font-family: var(--font-mono);
-  color: var(--edu-navy-light);
-  letter-spacing: 0.05em;
-}
-.cbt-timer.warning { color: var(--edu-amber); }
-.cbt-timer.danger  { color: var(--color-error); animation: pulse 1s infinite; }
-
-.streak-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: var(--radius-full);
-  font-size: 0.875rem;
-  font-weight: 700;
-  background-color: var(--edu-gold);
-  color: var(--edu-navy);
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.progress-bar { height: 0.5rem; border-radius: var(--radius-full); background-color: var(--product-muted); overflow: hidden; }
-.progress-bar-fill {
-  height: 100%;
-  border-radius: var(--radius-full);
-  background: linear-gradient(90deg, var(--edu-navy-mid), var(--edu-navy-light));
-  transition: width var(--transition-slow);
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
-/* ── Animations ────────────────────────────────────────────────────────────── */
-@keyframes animate-float {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-10px); }
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-surface);
+  color: #1E293B;
+  /* Dyslexia-friendly spacing from BOLDMIND_FONT_CONFIG */
+  letter-spacing: 0.01em;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-@keyframes animate-gradient {
-  0%, 100% { background-position: 0% 50%; }
-  50%       { background-position: 100% 50%; }
+
+/* ── Focus visible — keyboard accessibility ───────────────────────────────── */
+
+:focus-visible {
+  outline: 3px solid var(--color-edu-800);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
-.animate-float         { animation: animate-float 3s ease-in-out infinite; }
-.animate-float-delayed { animation: animate-float 3s ease-in-out 1.5s infinite; }
-.animate-gradient      { background-size: 200% 200%; animation: animate-gradient 4s ease infinite; }
+
+/* ── Scrollbar styling ────────────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-edu-200);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-edu-400);
+}
+
+/* ── CBT timer animation ──────────────────────────────────────────────────── */
+
+@keyframes timer-shrink {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: 283;
+  }
+
+  /* 2πr where r=45 */
+}
+
+.timer-ring {
+  animation: timer-shrink var(--timer-duration, 3600s) linear forwards;
+}
+
+/* ── Fade-in utility ──────────────────────────────────────────────────────── */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out both;
+}
+
+/* ── Slide-in utility ─────────────────────────────────────────────────────── */
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.25s ease-out both;
+}
+
+/* ── Correct / wrong flash ────────────────────────────────────────────────── */
+
+@keyframes correct-flash {
+
+  0%,
+  100% {
+    background-color: inherit;
+  }
+
+  50% {
+    background-color: #DCFCE7;
+  }
+}
+
+@keyframes wrong-flash {
+
+  0%,
+  100% {
+    background-color: inherit;
+  }
+
+  50% {
+    background-color: #FFE4E6;
+  }
+}
+
+.answer-correct {
+  animation: correct-flash 0.5s ease-in-out;
+}
+
+.answer-wrong {
+  animation: wrong-flash 0.5s ease-in-out;
+}

@@ -1,7 +1,7 @@
 {
   "type": "module",
-  "name": "@boldmind-tech/educenter",
-  "version": "1.0.0",
+  "name": "@boldmindng/educenter-web",
+  "version": "2.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -11,13 +11,13 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@boldmind-tech/ui":         "5.0.1",
-    "@boldmind-tech/utils":      "4.1.1",
-    "@boldmind-tech/auth":       "5.0.1",
-    "@boldmind-tech/api-client": "5.0.1",
-    "@types/node": "^20.11.3",
-    "@types/react": "^18.3.27",
-    "@types/react-dom": "^18.3.7",
+    "@boldmindng/ui":         "5.0.1",
+    "@boldmindng/utils":      "4.1.1",
+    "@boldmindng/auth":       "5.0.1",
+    "@boldmindng/api-client": "5.0.1",
+     "@types/node": "24.10.0",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
     "autoprefixer": "^10.4.19",
     "axios": "^1.6.2",
     "clsx": "^2.0.0",
@@ -25,20 +25,19 @@
     "date-fns": "^3.0.0",
     "framer-motion": "^12.29.2",
     "lucide-react": "^0.309.0",
-    "next": "14.2.35",
     "postcss": "^8.4.38",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "next": "16.2.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "tailwindcss": "^4.1.0",
     "react-hot-toast": "^2.4.1",
     "recharts": "^2.10.3",
-    "sharp": "^0.34.5",
     "sonner": "^2.0.7",
     "tailwind-merge": "^2.1.0",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5.4.5"
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "eslint": "^8",
+    "eslint": "^9.39.1",
     "eslint-config-next": "14.2.35"
   }
 }

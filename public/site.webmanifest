@@ -1,10 +1,10 @@
 {
-  "name": "EduCenter NG",
-  "short_name": "EDUCENTER",
+  "name": "Boldmind Educational Center",
+  "short_name": "Boldmind EduCenter",
   "description": "Pass exams. Build business. Master AI.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#1E40AF",
+  "background_color": "#FAFAF9",
   "theme_color": "#1E40AF",
   "orientation": "portrait-primary",
   "icons": [

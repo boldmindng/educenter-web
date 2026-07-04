@@ -1,108 +1,76 @@
+// lib/config.ts
+// App constants & env vars for educenter-web (standalone Next.js 16.2).
+// Only NEXT_PUBLIC_ vars are safe on the client side.
 
-// Subscription Plans
-export const SUBSCRIPTION_PLANS = {
-  studyHub: {
-    sixMonths: {
-      name: 'Study Hub - 6 Months',
-      price: 70000, // Paystack expects amount in kobo (₦700)
-      duration: 6,
-      features: [
-        'All past questions (JAMB, WAEC, NECO)',
-        'CBT practice mode',
-        'Performance analytics',
-        'Study plans & reminders',
-        'Offline access',
-        'Progress tracking',
-      ],
-    },
-    oneYear: {
-      name: 'Study Hub - 1 Year',
-      price: 100000, // ₦1,000
-      duration: 12,
-      features: [
-        'All past questions (JAMB, WAEC, NECO)',
-        'CBT practice mode',
-        'Performance analytics',
-        'Study plans & reminders',
-        'Offline access',
-        'Progress tracking',
-        'Priority support',
-      ],
-    },
-  },
-  businessSchool: {
-    lifetime: {
-      name: 'Digital Business School - Lifetime',
-      price: 100000, // ₦1,000
-      duration: null, // Lifetime
-      features: [
-        'Platform access',
-        'Free courses library',
-        'Community access',
-        'Premium courses (paid separately)',
-        'Expert-led content',
-        'Sales funnel templates',
-        'Marketing playbooks',
-      ],
-    },
-  },
-  aiLab: {
-    lifetime: {
-      name: 'AI Skills Lab - Lifetime',
-      price: 100000, // ₦1,000
-      duration: null, // Lifetime
-      features: [
-        'Platform access',
-        'Free AI tools',
-        'Basic tutorials',
-        'Premium tools (paid separately)',
-        'Weekly updates',
-        'Prompt engineering course',
-        'AI automation templates',
-      ],
-    },
-  },
-};
+export const APP_URL =
+  process.env.NEXT_PUBLIC_APP_URL ?? 'https://educenter.com.ng';
 
-// Exam Types
-export const EXAM_TYPES = [
-  { value: 'JAMB', label: 'JAMB' },
-  { value: 'WAEC', label: 'WAEC' },
-  { value: 'NECO', label: 'NECO' },
-];
+export const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_URL ?? 'https://api.boldmind.ng/api/v1';
 
-// Subjects (fallback if API doesn't return subjects)
-export const SUBJECTS = [
-  { value: 'mathematics', label: 'Mathematics' },
-  { value: 'english', label: 'English Language' },
-  { value: 'physics', label: 'Physics' },
-  { value: 'chemistry', label: 'Chemistry' },
-  { value: 'biology', label: 'Biology' },
-  { value: 'geography', label: 'Geography' },
-  { value: 'economics', label: 'Economics' },
-  { value: 'government', label: 'Government' },
-  { value: 'literature', label: 'Literature in English' },
-  { value: 'commerce', label: 'Commerce' },
-  { value: 'accounting', label: 'Accounting' },
-  { value: 'crk', label: 'Christian Religious Knowledge' },
-  { value: 'irk', label: 'Islamic Religious Knowledge' },
-  { value: 'civileducation', label: 'Civic Education' },
-  { value: 'agricultural-science', label: 'Agricultural Science' },
-];
+export const PAYSTACK_PUBLIC_KEY =
+  process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY ?? '';
 
-// Course Categories
-export const COURSE_CATEGORIES = [
-  { value: 'digital-marketing', label: 'Digital Marketing' },
-  { value: 'sales', label: 'Sales' },
-  { value: 'business-strategy', label: 'Business Strategy' },
-  { value: 'entrepreneurship', label: 'Entrepreneurship' },
-  { value: 'social-media', label: 'Social Media' },
-  { value: 'content-creation', label: 'Content Creation' },
-];
+export const POSTHOG_KEY  = process.env.NEXT_PUBLIC_POSTHOG_KEY  ?? '';
+export const POSTHOG_HOST = process.env.NEXT_PUBLIC_POSTHOG_HOST ?? 'https://app.posthog.com';
 
-// Course Levels
-export const COURSE_LEVELS = [
-  { value: 'beginner', label: 'Beginner' },
-  { value: 'intermediate', label: 'Intermediate' },
-  { value: 'advanced', label: 'Advanced' },
-];
+// ─── App identity ─────────────────────────────────────────────────────────────
+
+export const SITE = {
+  name:            'Boldmind EduCenter',
+  shortName:       'EduCenter',
+  slug:            'educenter',
+  pillar:          'education' as const,
+  domain:          'educenter.com.ng',
+  url:             APP_URL,
+  description:
+    'Nigerian exam prep — JAMB, WAEC, NECO past questions, CBT simulator, AI tutoring, and business skills.',
+  themeColor:      '#1E40AF',
+  backgroundColor: '#F8FAFC',
+  locale:          'en-NG',
+  timezone:        'Africa/Lagos',
+  twitterHandle:   '@boldmindeducenter',
+  ogImage:         `${APP_URL}/social/og-image.jpg`,
+} as const;
+
+// ─── Ecosystem cross-links (CoreDomain from products.ts) ─────────────────────
+
+export const ECOSYSTEM = {
+  boldmind:      'https://boldmind.ng',
+  amebogist:     'https://amebogist.ng',
+  villagecircle: 'https://villagecircle.ng',
+  planai:        'https://planai.boldmind.ng',
+  marketplace:   'https://marketplace.boldmind.ng',
+} as const;
+
+// ─── Exam / quiz config ───────────────────────────────────────────────────────
+
+export const EXAM_TYPES = ['JAMB', 'WAEC', 'NECO', 'POST_UTME'] as const;
+export type ExamType = (typeof EXAM_TYPES)[number];
+
+export const LEADERBOARD_PERIODS = ['weekly', 'monthly', 'alltime'] as const;
+export type LeaderboardPeriod = (typeof LEADERBOARD_PERIODS)[number];
+
+export const DEFAULT_QUESTION_COUNT = 40;
+export const CBT_TIMER_SECONDS      = 60 * 60; // 1 hour default
+
+// ─── Pricing (from pricing.ts educenter tiers) ───────────────────────────────
+
+export const PRICING = {
+  free:  { ngn: 0,     usd: 0 },
+  basic: { ngn: 2_500, usd: 2 },
+  pro:   { ngn: 6_250, usd: 5 },
+} as const;
+
+export type SubscriptionTier = keyof typeof PRICING;
+
+// ─── Feature flags (resolved from /api/v1/users/me at runtime) ───────────────
+
+export const DEFAULT_FEATURE_FLAGS = {
+  offlineQuestionPacks: true,
+  lms:                  true,
+  schoolPortal:         true,
+  businessPlaybook:     true,
+  aiTutor:              false,
+  peerStudyRooms:       false,
+} as const;

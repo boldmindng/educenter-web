@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { SuperNavbar, SuperFooter } from '@boldmind-tech/ui';
+import { SuperNavbar, SuperFooter } from '@boldmindng/ui';
 import Link from 'next/link';
 import { AuthProvider } from '@/lib/auth';
 import { ReactNode } from 'react';
@@ -185,7 +185,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
                   transition={{ duration: 0.7, delay: 0.2 }}
                 >
                   <h2 className="text-4xl font-black text-white mb-6 leading-tight">
-                    Educenter - Ace Exams
+                    Boldmind EduCenter - Ace Exams
                     <br />
                     Build Business <span className="text-[#FFC800]">Master AI</span>
                   </h2>
