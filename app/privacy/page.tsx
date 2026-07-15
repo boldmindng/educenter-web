@@ -1,4 +1,4 @@
-import { PrivacyPolicy } from '@boldmind-tech/ui';
+import { PrivacyPolicy } from "@boldmindng/ui";
 export default function PrivacyPage() {
-    return <PrivacyPolicy />;
+  return <PrivacyPolicy />;
 }

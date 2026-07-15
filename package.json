@@ -11,11 +11,11 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@boldmindng/ui":         "5.0.1",
-    "@boldmindng/utils":      "4.1.1",
-    "@boldmindng/auth":       "5.0.1",
-    "@boldmindng/api-client": "5.0.1",
-     "@types/node": "24.10.0",
+    "@boldmindng/ui": "19.0.0",
+    "@boldmindng/utils": "10.1.0",
+    "@boldmindng/auth": "17.0.0",
+    "@boldmindng/api-client": "14.0.0",
+    "@types/node": "24.10.0",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
     "autoprefixer": "^10.4.19",
